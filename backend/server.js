@@ -8,7 +8,14 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? [process.env.FRONTEND_URL, 'https://sen-tech-frontend.onrender.com']
+  : ['http://localhost:3000', 'http://localhost:5173'];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 app.use(morgan('dev'));
 
