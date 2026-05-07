@@ -4,3 +4,4 @@ node_modules/
 .DS_Store
 check-data.js
 fix-fallou.js
+seed-course.js

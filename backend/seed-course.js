@@ -5,7 +5,7 @@ const User = require('./models/User');
 const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
-const MONGO_URI = process.env.MONGO_URI || "mongodb+srv://thiammamadou0020:azerty@cluster0.j58n439.mongodb.net/sen-tech-platform-prod";
+const MONGO_URI = process.env.MONGO_URI;
 
 async function seed() {
   try {
