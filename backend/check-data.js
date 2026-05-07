@@ -3,7 +3,7 @@ const Enrollment = require('./models/Enrollment');
 const User = require('./models/User');
 const Course = require('./models/Course');
 
-const MONGO_URI = process.env.MONGO_URI || 'process.env.MONGO_URI';
+const MONGO_URI = process.env.MONGO_URI;
 
 mongoose.connect(MONGO_URI).then(async () => {
   const users = await User.find();
