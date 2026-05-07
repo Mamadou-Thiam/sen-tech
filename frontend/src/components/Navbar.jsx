@@ -123,9 +123,11 @@ const Navbar = () => {
               <NavLink to="/dashboard" icon={<FaTachometerAlt />}>
                 Mon Espace
               </NavLink>
-              <NavLink to="/my-enrollments" icon={<FaDoorOpen />}>
-                Mes Accès
-              </NavLink>
+              {user.role !== 'admin' && (
+                <NavLink to="/my-enrollments" icon={<FaDoorOpen />}>
+                  Mes Accès
+                </NavLink>
+              )}
               {user.role === 'admin' && (
                 <NavLink to="/admin" icon={<FaShieldAlt />}>
                   Admin
@@ -321,23 +323,25 @@ const Navbar = () => {
               >
                 <FaTachometerAlt /> Mon Espace
               </Link>
-              <Link 
-                to="/my-enrollments" 
-                onClick={() => setMobileMenuOpen(false)}
-                style={{
-                  padding: '14px 20px',
-                  color: 'white',
-                  textDecoration: 'none',
-                  borderRadius: '12px',
-                  background: isActive('/my-enrollments') ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
-                  fontWeight: '600',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px'
-                }}
-              >
-                <FaDoorOpen /> Mes Accès
-              </Link>
+              {user.role !== 'admin' && (
+                <Link 
+                  to="/my-enrollments" 
+                  onClick={() => setMobileMenuOpen(false)}
+                  style={{
+                    padding: '14px 20px',
+                    color: 'white',
+                    textDecoration: 'none',
+                    borderRadius: '12px',
+                    background: isActive('/my-enrollments') ? 'rgba(255, 255, 255, 0.1)' : 'transparent',
+                    fontWeight: '600',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px'
+                  }}
+                >
+                  <FaDoorOpen /> Mes Accès
+                </Link>
+              )}
               {user.role === 'admin' && (
                 <Link 
                   to="/admin" 

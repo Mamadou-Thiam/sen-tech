@@ -23,19 +23,26 @@ exports.getCourse = async (req, res) => {
 exports.createCourse = async (req, res) => {
   try {
     const { title, description, category, duration, price, content } = req.body;
-    const course = new Course({ title, description, category, duration, price, content });
+    const course = new Course({ title, description, duration, price, content });
+    if (category) course.category = category;
     await course.save();
     res.json(course);
   } catch (err) {
+    console.error('Erreur création cours:', err);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };
 
 exports.updateCourse = async (req, res) => {
   try {
-    const course = await Course.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    const { title, description, category, duration, price, content } = req.body;
+    const updateData = { title, description, duration, price, content };
+    if (category) updateData.category = category;
+    const course = await Course.findByIdAndUpdate(req.params.id, updateData, { new: true, runValidators: true });
+    if (!course) return res.status(404).json({ message: 'Formation non trouvée' });
     res.json(course);
   } catch (err) {
+    console.error('Erreur update cours:', err);
     res.status(500).json({ message: 'Erreur serveur' });
   }
 };

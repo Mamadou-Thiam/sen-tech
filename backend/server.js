@@ -31,7 +31,11 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI)
+const MONGO_URI = process.env.NODE_ENV === 'production'
+  ? process.env.MONGO_URI_PROD
+  : process.env.MONGO_URI_DEV;
+
+mongoose.connect(MONGO_URI)
   .then(() => {
     console.log('MongoDB connecté');
     app.listen(PORT, () => console.log(`Serveur démarré sur le port ${PORT}`));

@@ -53,11 +53,16 @@ const ManageCourses = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
+      const payload = {
+        ...formData,
+        duration: formData.duration === '' ? 0 : formData.duration,
+        price: formData.price === '' ? 0 : formData.price,
+      }
       if (editingCourse) {
-        await updateCourse(editingCourse._id, formData)
+        await updateCourse(editingCourse._id, payload)
         alert('Formation modifiée avec succès !')
       } else {
-        await createCourse(formData)
+        await createCourse(payload)
         alert('Formation créée avec succès !')
       }
       setShowForm(false)
@@ -114,11 +119,17 @@ const ManageCourses = () => {
             <div className="form-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               <div>
                 <label>Durée d'accès (jours)</label>
-                <input type="number" value={formData.duration} onChange={(e) => setFormData({...formData, duration: parseInt(e.target.value) || 0})} />
+                <input type="number" value={formData.duration} onChange={(e) => {
+                  const val = e.target.value;
+                  setFormData({...formData, duration: val === '' ? '' : parseInt(val) || 0});
+                }} />
               </div>
               <div>
                 <label>Prix (FCFA)</label>
-                <input type="number" value={formData.price} onChange={(e) => setFormData({...formData, price: parseInt(e.target.value) || 0})} />
+                <input type="number" value={formData.price} onChange={(e) => {
+                  const val = e.target.value;
+                  setFormData({...formData, price: val === '' ? '' : parseInt(val) || 0});
+                }} placeholder="0 (gratuit)" />
               </div>
             </div>
             <div style={{ marginTop: '10px' }}>

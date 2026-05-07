@@ -5,3 +5,4 @@ node_modules/
 check-data.js
 fix-fallou.js
 seed-course.js
+sync-dev-to-prod.js
