@@ -46,7 +46,7 @@ const Register = () => {
       padding: '40px 20px',
       background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)'
     }}>
-      <div style={{
+      <div className="register-card" style={{
         width: '100%',
         maxWidth: '520px',
         background: 'white',
@@ -56,7 +56,7 @@ const Register = () => {
         border: '1px solid #e2e8f0'
       }}>
         {/* Header */}
-        <div style={{
+        <div className="register-header" style={{
           padding: '40px 40px 32px',
           background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
           color: 'white',
@@ -75,7 +75,7 @@ const Register = () => {
           }} />
           
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{
+            <div className="register-icon" style={{
               width: '80px',
               height: '80px',
               background: 'rgba(255, 255, 255, 0.2)',
@@ -109,7 +109,7 @@ const Register = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} style={{ padding: '32px 40px' }}>
+        <form onSubmit={handleSubmit} className="register-form" style={{ padding: '32px 40px' }}>
           {error && (
             <div style={{
               padding: '14px 18px',
@@ -334,6 +334,7 @@ const Register = () => {
           <button 
             type="submit" 
             disabled={loading}
+            className="register-btn"
             style={{
               width: '100%',
               padding: '16px',
@@ -377,7 +378,7 @@ const Register = () => {
         </form>
 
         {/* Footer */}
-        <div style={{
+        <div className="register-footer" style={{
           padding: '24px 40px',
           background: '#f8fafc',
           borderTop: '1px solid #e2e8f0',
@@ -402,6 +403,26 @@ const Register = () => {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .register-card { border-radius: 16px; }
+          .register-header { padding: 28px 20px 24px !important; }
+          .register-header h2 { font-size: 24px !important; }
+          .register-form { padding: 24px 20px !important; }
+          .register-footer { padding: 20px !important; }
+          .register-icon { width: 60px !important; height: 60px !important; font-size: 28px !important; }
+        }
+        @media (max-width: 480px) {
+          .register-card { border-radius: 12px; }
+          .register-header { padding: 24px 16px 20px !important; }
+          .register-header h2 { font-size: 20px !important; }
+          .register-form { padding: 20px 16px !important; }
+          .register-footer { padding: 16px !important; }
+          .register-icon { width: 48px !important; height: 48px !important; font-size: 22px !important; }
+          .register-btn { padding: 14px !important; font-size: 14px !important; }
+        }
+      `}</style>
     </div>
   )
 }

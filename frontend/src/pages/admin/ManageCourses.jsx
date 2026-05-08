@@ -116,7 +116,7 @@ const ManageCourses = () => {
                 ))}
               </select>
             </div>
-            <div className="form-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <div className="form-group admin-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               <div>
                 <label>Durée d'accès (jours)</label>
                 <input type="number" value={formData.duration} onChange={(e) => {
@@ -146,12 +146,12 @@ const ManageCourses = () => {
         <div>
           {courses.map(course => (
             <div key={course._id} className="card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="admin-card-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                   <h3>{course.title}</h3>
                   <p>{course.category?.name} - {course.duration} jours - {course.price} FCFA</p>
                 </div>
-                <div>
+                <div className="admin-card-actions">
                   <button onClick={() => handleEdit(course)} className="btn btn-primary" style={{ marginRight: '5px' }}>Modifier</button>
                   <button onClick={() => handleDelete(course._id)} className="btn btn-danger">Supprimer</button>
                 </div>

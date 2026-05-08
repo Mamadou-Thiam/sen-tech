@@ -114,14 +114,16 @@ const ManageUsers = () => {
       {loading ? <p>Chargement...</p> : (
         <div>
           {users.map(user => (
-            <div key={user._id} className="card" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div>
-                <h3>{user.name}</h3>
-                <p>{user.email} - <span style={{ color: user.role === 'admin' ? 'red' : 'blue' }}>{user.role}</span></p>
-              </div>
-              <div>
-                <button onClick={() => handleEdit(user)} className="btn btn-primary" style={{ marginRight: '5px' }}>Modifier</button>
-                <button onClick={() => handleDelete(user._id)} className="btn btn-danger">Supprimer</button>
+            <div key={user._id} className="card">
+              <div className="admin-card-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
+                <div>
+                  <h3>{user.name}</h3>
+                  <p>{user.email} - <span style={{ color: user.role === 'admin' ? 'red' : 'blue' }}>{user.role}</span></p>
+                </div>
+                <div className="admin-card-actions">
+                  <button onClick={() => handleEdit(user)} className="btn btn-primary" style={{ marginRight: '5px' }}>Modifier</button>
+                  <button onClick={() => handleDelete(user._id)} className="btn btn-danger">Supprimer</button>
+                </div>
               </div>
             </div>
           ))}

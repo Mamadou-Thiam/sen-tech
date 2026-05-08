@@ -34,41 +34,41 @@ const Dashboard = () => {
   if (user?.role === 'admin') {
     return (
       <div className="container" style={{ maxWidth: '1280px' }}>
+      <div className="dash-header" style={{
+        padding: '48px 40px',
+        background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #0ea5e9 100%)',
+        borderRadius: '24px',
+        marginBottom: '40px',
+        color: 'white',
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: '0 20px 60px rgba(99, 102, 241, 0.3)'
+      }}>
         <div style={{
-          padding: '48px 40px',
-          background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #0ea5e9 100%)',
-          borderRadius: '24px',
-          marginBottom: '40px',
-          color: 'white',
-          position: 'relative',
-          overflow: 'hidden',
-          boxShadow: '0 20px 60px rgba(99, 102, 241, 0.3)'
-        }}>
-          <div style={{
-            position: 'absolute', top: '-100px', right: '-100px',
-            width: '300px', height: '300px',
-            background: 'rgba(255, 255, 255, 0.1)', borderRadius: '50%'
-          }} />
-          <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '24px' }}>
-            <div style={{
-              width: '80px', height: '80px',
-              background: 'rgba(255, 255, 255, 0.2)', borderRadius: '20px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '36px', fontWeight: '800',
-              backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)'
-            }}>
-              <FaShieldAlt />
-            </div>
-            <div>
-              <h2 style={{ fontSize: '36px', fontWeight: '800', marginBottom: '8px' }}>
-                Espace Administrateur
-              </h2>
-              <p style={{ fontSize: '18px', color: '#ffffff', fontWeight: '600', margin: 0 }}>
-                Gérez les formations, les utilisateurs et les accès
-              </p>
-            </div>
+          position: 'absolute', top: '-100px', right: '-100px',
+          width: '300px', height: '300px',
+          background: 'rgba(255, 255, 255, 0.1)', borderRadius: '50%'
+        }} />
+        <div className="dash-header-flex" style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div className="dash-header-avatar" style={{
+            width: '80px', height: '80px',
+            background: 'rgba(255, 255, 255, 0.2)', borderRadius: '20px',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontSize: '36px', fontWeight: '800',
+            backdropFilter: 'blur(10px)', border: '1px solid rgba(255, 255, 255, 0.3)'
+          }}>
+            <FaShieldAlt />
+          </div>
+          <div>
+            <h2 style={{ fontSize: '36px', fontWeight: '800', marginBottom: '8px' }}>
+              Espace Administrateur
+            </h2>
+            <p style={{ fontSize: '18px', color: '#ffffff', fontWeight: '600', margin: 0 }}>
+              Gérez les formations, les utilisateurs et les accès
+            </p>
           </div>
         </div>
+      </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
           <Link to="/admin/courses" style={{ textDecoration: 'none' }}>
@@ -122,7 +122,7 @@ const Dashboard = () => {
 
   return (
     <div className="container" style={{ maxWidth: '1280px' }}>
-      <div style={{
+      <div className="dash-header" style={{
         padding: '40px',
         background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #0ea5e9 100%)',
         borderRadius: '24px',
@@ -137,8 +137,8 @@ const Dashboard = () => {
           width: '300px', height: '300px',
           background: 'rgba(255, 255, 255, 0.1)', borderRadius: '50%'
         }} />
-        <div style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '24px' }}>
-          <div style={{
+        <div className="dash-header-flex" style={{ position: 'relative', zIndex: 1, display: 'flex', alignItems: 'center', gap: '24px' }}>
+          <div className="dash-header-avatar" style={{
             width: '80px', height: '80px',
             background: 'rgba(255, 255, 255, 0.2)', borderRadius: '20px',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -250,7 +250,7 @@ const Dashboard = () => {
             {enrollments.slice(0, 5).map((enrollment) => {
               const expired = isExpired(enrollment.endDate)
               return (
-                <div key={enrollment._id} style={{
+                <div key={enrollment._id} className="dash-enrollment-item" style={{
                   padding: '20px', background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
                   borderRadius: '16px', border: `1px solid ${expired ? '#fde68a' : '#bbf7d0'}`,
                   display: 'flex', justifyContent: 'space-between', alignItems: 'center', transition: 'all 0.3s ease'
@@ -293,6 +293,22 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .dash-header { padding: 28px 24px !important; border-radius: 16px !important; }
+          .dash-header h2 { font-size: 26px !important; }
+          .dash-header p { font-size: 15px !important; }
+          .dash-header-flex { flex-direction: column !important; text-align: center !important; }
+          .dash-header-avatar { width: 64px !important; height: 64px !important; font-size: 28px !important; }
+          .dash-enrollment-item { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+        }
+        @media (max-width: 480px) {
+          .dash-header { padding: 20px 16px !important; border-radius: 12px !important; }
+          .dash-header h2 { font-size: 22px !important; }
+          .dash-header p { font-size: 14px !important; }
+          .dash-header-avatar { width: 56px !important; height: 56px !important; font-size: 24px !important; }
+        }
+      `}</style>
     </div>
   )
 }

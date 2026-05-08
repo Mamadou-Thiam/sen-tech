@@ -108,7 +108,7 @@ const ManageEnrollments = () => {
                 ))}
               </select>
             </div>
-            <div className="form-group" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+            <div className="form-group admin-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
               <div>
                 <label>Date de début</label>
                 <input type="date" value={formData.startDate} onChange={(e) => setFormData({...formData, startDate: e.target.value})} />
@@ -152,7 +152,7 @@ const ManageEnrollments = () => {
         <div>
           {enrollments.map(enrollment => (
             <div key={enrollment._id} className="card">
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div className="admin-card-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                   <h3>{enrollment.student?.name} - {enrollment.course?.title}</h3>
                   <p>Début: {new Date(enrollment.startDate).toLocaleDateString()} | Fin: {new Date(enrollment.endDate).toLocaleDateString()}</p>
@@ -160,7 +160,7 @@ const ManageEnrollments = () => {
                     {isExpired(enrollment.endDate) ? 'EXPIRÉ' : 'ACTIF'}
                   </p>
                 </div>
-                <div>
+                <div className="admin-card-actions">
                   <button onClick={() => { setSelectedEnrollment(enrollment); setShowExtendForm(true); }} className="btn btn-primary" style={{ marginRight: '5px' }}>
                     Prolonger
                   </button>

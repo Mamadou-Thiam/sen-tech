@@ -72,7 +72,7 @@ const AdminDashboard = () => {
 
       <div className="card">
         <h3>Actions Rapides</h3>
-        <div style={{ display: 'flex', gap: '10px', marginTop: '10px' }}>
+        <div className="admin-quick-actions" style={{ display: 'flex', gap: '10px', marginTop: '10px', flexWrap: 'wrap' }}>
           <Link to="/admin/courses" className="btn btn-primary">Créer une formation</Link>
           <Link to="/admin/users" className="btn btn-success">Ajouter un étudiant</Link>
           <Link to="/admin/enrollments" className="btn btn-primary">Attribuer un accès</Link>

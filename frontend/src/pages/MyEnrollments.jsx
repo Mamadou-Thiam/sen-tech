@@ -43,7 +43,7 @@ const MyEnrollments = () => {
           ) : (
             enrollments.map(enrollment => (
               <div key={enrollment._id} className="card">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <div className="admin-card-row" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
                   <div>
                     <h3>{enrollment.course?.title}</h3>
                     <p>Date de début: {new Date(enrollment.startDate).toLocaleDateString()}</p>
@@ -51,11 +51,11 @@ const MyEnrollments = () => {
                   </div>
                   <div style={{ textAlign: 'right' }}>
                     {isExpired(enrollment.endDate) ? (
-                      <span style={{ color: 'red', fontWeight: 'bold' }}>EXPIRÉ</span>
+                      <span className="badge badge-error">EXPIRÉ</span>
                     ) : (
                       <>
-                        <span style={{ color: 'green', fontWeight: 'bold' }}>ACTIF</span>
-                        <p>{getDaysRemaining(enrollment.endDate)} jours restants</p>
+                        <span className="badge badge-success">ACTIF</span>
+                        <p style={{ margin: '8px 0 0', fontSize: '14px', color: '#64748b' }}>{getDaysRemaining(enrollment.endDate)} jours restants</p>
                       </>
                     )}
                   </div>

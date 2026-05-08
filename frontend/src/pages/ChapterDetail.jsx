@@ -142,7 +142,7 @@ const ChapterDetail = () => {
   const progress = ((currentIndex + 1) / course.content.length) * 100
 
   return (
-    <div style={{ 
+    <div className="chapter-layout" style={{ 
       maxWidth: '1400px', 
       margin: '0 auto', 
       padding: '24px',
@@ -151,7 +151,7 @@ const ChapterDetail = () => {
       alignItems: 'flex-start'
     }}>
       {/* Sidebar - Liste des chapitres */}
-      <aside style={{ 
+      <aside className="chapter-sidebar" style={{ 
         width: sidebarOpen ? '320px' : '60px',
         flexShrink: 0,
         position: 'sticky',
@@ -292,10 +292,11 @@ const ChapterDetail = () => {
       </aside>
 
       {/* Contenu du chapitre */}
-      <main style={{ flex: 1, minWidth: 0 }}>
+      <main className="chapter-content" style={{ flex: 1, minWidth: 0 }}>
         {/* Navigation retour */}
         <Link 
           to={`/courses/${courseId}`} 
+          className="chapter-back-btn"
           style={{ 
             display: 'inline-flex',
             alignItems: 'center',
@@ -325,7 +326,7 @@ const ChapterDetail = () => {
         </Link>
 
         {/* Header du chapitre */}
-        <div style={{ 
+        <div className="chapter-header" style={{ 
           marginBottom: '32px',
           padding: '32px',
           background: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 100%)',
@@ -346,8 +347,8 @@ const ChapterDetail = () => {
             borderRadius: '50%'
           }} />
           
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
-            <span style={{
+          <div className="chapter-header-flex" style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '16px' }}>
+            <span className="chapter-header-icon" style={{
               fontSize: '48px',
               width: '80px',
               height: '80px',
@@ -361,7 +362,7 @@ const ChapterDetail = () => {
               {getChapterIcon(currentIndex)}
             </span>
             <div style={{ flex: 1 }}>
-              <h1 style={{ 
+              <h1 className="chapter-title" style={{ 
                 fontSize: '32px', 
                 marginBottom: '8px',
                 background: 'linear-gradient(135deg, #1e293b 0%, #475569 100%)',
@@ -639,7 +640,7 @@ const ChapterDetail = () => {
         </div>
 
         {/* Navigation précédent / suivant */}
-        <div style={{ 
+        <div className="chapter-nav" style={{ 
           display: 'flex', 
           justifyContent: 'space-between', 
           marginTop: '32px',
@@ -712,6 +713,35 @@ const ChapterDetail = () => {
           ) : <div />}
         </div>
       </main>
+
+      <style>{`
+        @media (max-width: 1024px) {
+          .chapter-layout { flex-direction: column !important; }
+          .chapter-sidebar { 
+            width: 100% !important; 
+            position: static !important;
+            max-height: none !important;
+            margin-bottom: 20px !important;
+          }
+          .chapter-sidebar > div { max-height: 300px !important; }
+        }
+        @media (max-width: 768px) {
+          .chapter-layout { padding: 16px !important; gap: 20px !important; }
+          .chapter-sidebar { padding: 16px !important; border-radius: 16px !important; }
+          .chapter-header { padding: 24px !important; border-radius: 16px !important; }
+          .chapter-header-flex { flex-direction: column !important; text-align: center !important; }
+          .chapter-header-icon { width: 64px !important; height: 64px !important; font-size: 36px !important; }
+          .chapter-title { font-size: 26px !important; }
+          .chapter-back-btn { margin-bottom: 16px !important; font-size: 13px !important; }
+        }
+        @media (max-width: 480px) {
+          .chapter-layout { padding: 10px !important; }
+          .chapter-sidebar { padding: 12px !important; border-radius: 12px !important; }
+          .chapter-header { padding: 20px 16px !important; border-radius: 12px !important; }
+          .chapter-header-icon { width: 56px !important; height: 56px !important; font-size: 28px !important; }
+          .chapter-title { font-size: 22px !important; }
+        }
+      `}</style>
     </div>
   )
 }

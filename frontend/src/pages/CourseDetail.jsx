@@ -121,6 +121,7 @@ const CourseDetail = () => {
       {/* Navigation retour */}
       <Link 
         to="/courses" 
+        className="cd-back-btn"
         style={{ 
           display: 'inline-flex',
           alignItems: 'center',
@@ -150,7 +151,7 @@ const CourseDetail = () => {
       </Link>
 
       {/* Header du cours */}
-      <div style={{
+      <div className="cd-header" style={{
         padding: '40px',
         background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #0ea5e9 100%)',
         borderRadius: '24px',
@@ -181,8 +182,8 @@ const CourseDetail = () => {
         }} />
         
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-            <span style={{
+          <div className="cd-header-top" style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+            <span className="cd-header-icon" style={{
               fontSize: '56px',
               width: '100px',
               height: '100px',
@@ -233,7 +234,7 @@ const CourseDetail = () => {
           </p>
 
           {/* Stats */}
-          <div style={{ 
+          <div className="course-detail-stats" style={{ 
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             gap: '20px'
@@ -329,7 +330,7 @@ const CourseDetail = () => {
 
       {/* Admin Actions */}
       {user?.role === 'admin' && (
-        <div style={{
+        <div className="cd-admin-actions" style={{
           padding: '20px',
           background: 'white',
           borderRadius: '16px',
@@ -396,6 +397,7 @@ const CourseDetail = () => {
             {course.content.map((item, index) => (
               <div 
                 key={index} 
+                className="cd-chapter-item"
                 style={{
                   padding: '24px',
                   background: 'linear-gradient(135deg, #f8fafc 0%, #ffffff 100%)',
@@ -516,6 +518,26 @@ const CourseDetail = () => {
           </div>
         )}
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .cd-back-btn { margin-bottom: 20px !important; padding: 10px 16px !important; font-size: 13px !important; }
+          .cd-header { padding: 28px 24px !important; border-radius: 16px !important; margin-bottom: 20px !important; }
+          .cd-header h2 { font-size: 26px !important; }
+          .cd-header-icon { width: 72px !important; height: 72px !important; font-size: 40px !important; }
+          .cd-header-top { flex-direction: column !important; text-align: center !important; }
+          .cd-admin-actions { flex-direction: column !important; }
+          .cd-admin-actions .btn { width: 100% !important; justify-content: center !important; }
+          .cd-chapter-item { flex-direction: column !important; gap: 16px !important; padding: 20px !important; }
+          .cd-chapter-item .btn { width: 100% !important; justify-content: center !important; margin-left: 0 !important; }
+        }
+        @media (max-width: 480px) {
+          .cd-header { padding: 20px 16px !important; border-radius: 12px !important; }
+          .cd-header h2 { font-size: 22px !important; }
+          .cd-header-icon { width: 56px !important; height: 56px !important; font-size: 32px !important; }
+          .cd-back-btn { padding: 8px 12px !important; font-size: 12px !important; }
+        }
+      `}</style>
 
       {/* Stats Modal */}
       {showStats && stats && (

@@ -46,7 +46,7 @@ const Courses = () => {
   return (
     <div className="container" style={{ maxWidth: '1280px' }}>
       {/* Header */}
-      <div style={{
+      <div className="courses-header" style={{
         padding: '48px 40px',
         background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 50%, #0ea5e9 100%)',
         borderRadius: '24px',
@@ -77,8 +77,8 @@ const Courses = () => {
         }} />
         
         <div style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
-            <div style={{
+          <div className="courses-header-flex" style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '20px' }}>
+            <div className="courses-header-icon" style={{
               width: '80px',
               height: '80px',
               background: 'rgba(255, 255, 255, 0.2)',
@@ -115,7 +115,7 @@ const Courses = () => {
       </div>
 
       {/* Filters */}
-      <div style={{
+      <div className="courses-filters" style={{
         padding: '24px',
         background: 'white',
         borderRadius: '20px',
@@ -210,7 +210,7 @@ const Courses = () => {
       </div>
 
       {/* Results count */}
-      <div style={{
+      <div className="courses-count" style={{
         marginBottom: '24px',
         padding: '12px 20px',
         background: 'white',
@@ -406,6 +406,26 @@ const Courses = () => {
           </button>
         </div>
       )}
+      <style>{`
+        @media (max-width: 768px) {
+          .courses-header { padding: 32px 24px !important; margin-bottom: 24px !important; border-radius: 16px !important; }
+          .courses-header h2 { font-size: 28px !important; }
+          .courses-header p { font-size: 15px !important; }
+          .courses-header-icon { width: 56px !important; height: 56px !important; font-size: 28px !important; }
+          .courses-header-flex { flex-direction: column !important; text-align: center !important; }
+          .courses-filters { padding: 16px !important; gap: 12px !important; }
+          .courses-filters > div { min-width: 100% !important; }
+          .courses-count { font-size: 13px !important; padding: 10px 16px !important; }
+          .courses-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+        }
+        @media (max-width: 480px) {
+          .courses-header { padding: 24px 16px !important; margin-bottom: 16px !important; border-radius: 12px !important; }
+          .courses-header h2 { font-size: 22px !important; }
+          .courses-header p { font-size: 14px !important; }
+          .courses-header-icon { width: 48px !important; height: 48px !important; font-size: 24px !important; }
+          .courses-filters { padding: 12px !important; }
+        }
+      `}</style>
     </div>
   )
 }

@@ -34,7 +34,7 @@ const Login = () => {
       padding: '40px 20px',
       background: 'linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%)'
     }}>
-      <div style={{
+      <div className="login-card" style={{
         width: '100%',
         maxWidth: '480px',
         background: 'white',
@@ -44,7 +44,7 @@ const Login = () => {
         border: '1px solid #e2e8f0'
       }}>
         {/* Header */}
-        <div style={{
+        <div className="login-header" style={{
           padding: '40px 40px 32px',
           background: 'linear-gradient(135deg, #6366f1 0%, #4f46e5 100%)',
           color: 'white',
@@ -63,7 +63,7 @@ const Login = () => {
           }} />
           
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <div style={{
+            <div className="login-icon" style={{
               width: '80px',
               height: '80px',
               background: 'rgba(255, 255, 255, 0.2)',
@@ -97,7 +97,7 @@ const Login = () => {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} style={{ padding: '32px 40px' }}>
+        <form onSubmit={handleSubmit} className="login-form" style={{ padding: '32px 40px' }}>
           {error && (
             <div style={{
               padding: '14px 18px',
@@ -220,6 +220,7 @@ const Login = () => {
           <button 
             type="submit" 
             disabled={loading}
+            className="login-btn"
             style={{
               width: '100%',
               padding: '16px',
@@ -263,7 +264,7 @@ const Login = () => {
         </form>
 
         {/* Footer */}
-        <div style={{
+        <div className="login-footer" style={{
           padding: '24px 40px',
           background: '#f8fafc',
           borderTop: '1px solid #e2e8f0',
@@ -288,6 +289,26 @@ const Login = () => {
           </p>
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .login-card { border-radius: 16px; }
+          .login-header { padding: 28px 20px 24px !important; }
+          .login-header h2 { font-size: 24px !important; }
+          .login-form { padding: 24px 20px !important; }
+          .login-footer { padding: 20px !important; }
+          .login-icon { width: 60px !important; height: 60px !important; font-size: 28px !important; }
+        }
+        @media (max-width: 480px) {
+          .login-card { border-radius: 12px; }
+          .login-header { padding: 24px 16px 20px !important; }
+          .login-header h2 { font-size: 20px !important; }
+          .login-form { padding: 20px 16px !important; }
+          .login-footer { padding: 16px !important; }
+          .login-icon { width: 48px !important; height: 48px !important; font-size: 22px !important; }
+          .login-btn { padding: 14px !important; font-size: 14px !important; }
+        }
+      `}</style>
     </div>
   )
 }
