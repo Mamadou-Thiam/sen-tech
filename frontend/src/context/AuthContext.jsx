@@ -11,7 +11,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const idleTimer = useRef(null);
-  const INACTIVITY_TIME = 2 * 60 * 1000; // 2 minutes
+  const INACTIVITY_TIME = 5 * 60 * 1000; // 5 minutes
 
   const logout = useCallback(() => {
     localStorage.removeItem('token');
