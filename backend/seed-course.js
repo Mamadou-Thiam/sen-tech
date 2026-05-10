@@ -38,16 +38,9 @@ async function seed() {
       console.log('ℹ️ Catégorie existe déjà:', category.name);
     }
 
-    await Course.deleteMany({ title: "Les fondamentaux du développement web" });
-    console.log('🗑️ Ancien cours supprimé');
+    let course = await Course.findOne({ title: "Les fondamentaux du développement web" });
 
-    const course = await Course.create({
-      title: "Les fondamentaux du développement web",
-      description: "Formation complète pour débutants : HTML, CSS, Bootstrap, JavaScript, DOM et bonnes pratiques.",
-      category: category._id,
-      duration: 50,
-      price: 0,
-      content: [
+    const contentData = [
         {
           type: "module",
           title: "📘 Chapitre 1 : Introduction au Web, Internet et au Développement Web",
@@ -1241,9 +1234,25 @@ Créer un site vitrine responsive en utilisant HTML, CSS, Bootstrap et JavaScrip
 - Mettre en pratique tout ce qui a été appris
 - Un projet complet pour le portfolio`
         }
-      ]
-    });
-    console.log('✅ Cours créé:', course.title);
+    ];
+
+    if (course) {
+      course.description = "Formation complète pour débutants : HTML, CSS, Bootstrap, JavaScript, DOM et bonnes pratiques.";
+      course.category = category._id;
+      course.content = contentData;
+      await course.save();
+      console.log('✅ Cours mis à jour (durée et prix préservés)');
+    } else {
+      course = await Course.create({
+        title: "Les fondamentaux du développement web",
+        description: "Formation complète pour débutants : HTML, CSS, Bootstrap, JavaScript, DOM et bonnes pratiques.",
+        category: category._id,
+        duration: 50,
+        price: 0,
+        content: contentData
+      });
+      console.log('✅ Cours créé avec les valeurs par défaut');
+    }
     console.log('📖 Nombre de chapitres:', course.content.length);
 
   } catch (error) {
