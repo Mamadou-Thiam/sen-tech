@@ -10,13 +10,13 @@
 
 1. [Introduction to the Web](#chapitre-1-introduction-to-the-web)
 2. [Git et GitHub](#chapitre-2-introduction-à-git-et-github)
-3. [CSS](#chapitre-3-css)
-4. [Bootstrap](#chapitre-4-bootstrap)
-5. [Introduction aux algorithmes](#chapitre-5-introduction-aux-algorithmes)
-6. [Structures de données](#chapitre-6-structures-de-données)
-7. [JavaScript](#chapitre-7-javascript)
-8. [DOM (Document Object Model)](#chapitre-8-dom-document-object-model)
-9. [Vibe Coding](#chapitre-9-vibe-coding)
+3. [Introduction à CSS](#chapitre-4-introduction-à-css)
+4. [Bootstrap](#chapitre-5-bootstrap)
+5. [Introduction aux algorithmes](#chapitre-6-introduction-aux-algorithmes)
+6. [Structures de données](#chapitre-7-structures-de-données)
+7. [JavaScript](#chapitre-8-javascript)
+8. [DOM (Document Object Model)](#chapitre-9-dom-document-object-model)
+9. [Vibe Coding](#chapitre-10-vibe-coding)
 10. [Projet Final Global](#projet-final-global)
 
 ---
@@ -390,439 +390,547 @@ Proposer des modifications à un projet
 
 ---
 
-# Chapitre 3 : CSS
+# Chapitre 4 : Introduction à CSS (Cours complet)
 
-## Introduction
+## 🎯 Objectifs du chapitre
 
-CSS (Cascading Style Sheets) est le langage qui permet de styliser vos pages HTML. Si HTML est le squelette, CSS est l'habillage : couleurs, polices, mise en page, animations... C'est ce qui rend un site beau et agréable à utiliser.
+À la fin de ce chapitre, l'apprenant sera capable de :
 
-## Objectifs pédagogiques
+- Comprendre ce qu'est CSS
+- Relier un fichier HTML à un fichier CSS
+- Ajouter du style à une page web
+- Modifier les couleurs, textes et espacements
+- Utiliser les sélecteurs CSS
+- Créer une mise en page simple et moderne
+- Comprendre les bases du responsive design
 
-- Maîtriser les sélecteurs CSS
-- Comprendre le box model
-- Utiliser Flexbox pour la mise en page
-- Créer des designs responsives
+## 1. 🎨 Qu'est-ce que CSS ?
 
-## Contenu détaillé
+CSS signifie **Cascading Style Sheets**.
 
-### 3.1 Intégrer du CSS
+CSS est utilisé pour :
 
-Il y a trois façons d'ajouter du CSS :
+- Styliser une page web
+- Ajouter des couleurs et des animations
+- Modifier les tailles et positions des éléments
+- Rendre un site moderne et responsive
+
+> HTML structure le contenu, CSS s'occupe du design.
+
+## 2. 📂 Organisation des fichiers
+
+Dans un projet web, on sépare généralement :
+
+- Le contenu → **HTML**
+- Le design → **CSS**
+
+```
+mon-projet/
+│
+├── index.html
+└── style.css
+```
+
+- `index.html` contient la structure de la page.
+- `style.css` contient les styles.
+
+## 3. 🔗 Comment lier HTML et CSS ?
+
+Pour connecter le fichier CSS au fichier HTML, on utilise la balise `<link>` :
 
 ```html
-<!-- 1. En ligne (inline) - à éviter -->
-<p style="color: blue; font-size: 16px;">Texte bleu</p>
+<link rel="stylesheet" href="style.css">
+```
 
-<!-- 2. Interne (dans le <head>) - pour les pages uniques -->
+Cette balise se place dans la partie `<head>` du document HTML.
+
+## 4. 📄 Exemple complet de liaison HTML/CSS
+
+**Fichier HTML : index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Mon site CSS</title>
+</head>
+
+<body>
+    <h1>Bienvenue sur mon site</h1>
+    <p>Apprentissage du CSS</p>
+</body>
+
+</html>
+```
+
+**Fichier CSS : style.css**
+
+```css
+body {
+    background-color: lightgray;
+}
+
+h1 {
+    color: blue;
+    text-align: center;
+}
+
+p {
+    font-size: 20px;
+}
+```
+
+## 5. 🔍 Explication de la balise `<link>`
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+| Élément | Rôle |
+|---------|------|
+| `<link>` | Permet de relier un fichier |
+| `rel="stylesheet"` | Indique qu'il s'agit d'un fichier CSS |
+| `href="style.css"` | Chemin du fichier CSS |
+
+### 📁 Liaison avec un dossier CSS
+
+```
+mon-projet/
+│
+├── index.html
+│
+└── css/
+    └── style.css
+```
+
+```html
+<link rel="stylesheet" href="css/style.css">
+```
+
+## 6. 🎨 Les différentes façons d'ajouter du CSS
+
+### CSS Inline
+
+Le style est directement écrit dans la balise HTML :
+
+```html
+<p style="color: blue;">Bonjour</p>
+```
+
+### CSS Interne
+
+Le style est placé dans la balise `<style>` dans le `<head>` :
+
+```html
 <head>
     <style>
-        p { color: blue; font-size: 16px; }
+        p { color: red; }
     </style>
 </head>
-
-<!-- 3. Externe (recommandé) -->
-<head>
-    <link rel="stylesheet" href="styles.css">
-</head>
 ```
 
-### 3.2 Les sélecteurs
+### CSS Externe (Méthode recommandée)
+
+```html
+<link rel="stylesheet" href="style.css">
+```
+
+## 7. 🏷️ Syntaxe CSS
+
+```
+selecteur {
+    propriété: valeur;
+}
+```
+
+**Exemple :**
 
 ```css
-/* Sélecteur d'élément */
+h1 {
+    color: blue;
+    font-size: 40px;
+}
+```
+
+| Élément | Rôle |
+|---------|------|
+| `h1` | Sélecteur |
+| `color` | Propriété |
+| `blue` | Valeur |
+
+## 8. 🎨 Les couleurs en CSS
+
+```css
+body {
+    background-color: lightgray;
+}
+
+h1 {
+    color: darkblue;
+}
+```
+
+| Type | Exemple |
+|------|---------|
+| Nom | `red` |
+| HEX | `#ff0000` |
+| RGB | `rgb(255,0,0)` |
+
+## 9. 🔠 Modifier le texte
+
+```css
 p {
-    color: navy;
-}
-
-/* Sélecteur de classe */
-.highlight {
-    background-color: yellow;
-}
-
-/* Sélecteur d'ID */
-#header {
-    background-color: #333;
-}
-
-/* Sélecteur multiple */
-h1, h2, h3 {
-    font-family: Arial, sans-serif;
-}
-
-/* Sélecteur descendant */
-nav ul li a {
-    text-decoration: none;
-}
-
-/* Sélecteur enfant direct */
-div > p {
-    margin: 0;
-}
-
-/* Sélecteur frère adjacent */
-h1 + p {
-    font-style: italic;
-}
-
-/* Pseudo-classes */
-a:hover {
-    color: red;
-}
-
-li:first-child {
+    font-size: 18px;
+    font-family: Arial;
     font-weight: bold;
-}
-
-li:last-child {
-    border-bottom: none;
-}
-
-input:focus {
-    border-color: blue;
-    outline: none;
-}
-
-/* Pseudo-éléments */
-p::first-letter {
-    font-size: 2em;
-    color: red;
-}
-
-p::before {
-    content: "→ ";
-    color: gray;
+    text-align: center;
 }
 ```
 
-**Spécificité (ordre de priorité) :**
+| Propriété | Rôle |
+|-----------|------|
+| `font-size` | Taille du texte |
+| `font-family` | Police |
+| `font-weight` | Gras |
+| `text-align` | Alignement |
 
-```
-Inline style  >  ID  >  Classe/Pseudo-classe  >  Élément
-   1000           100         10                    1
-```
-
-### 3.3 Le Box Model
-
-Chaque élément HTML est une boîte composée de :
-
-```
-┌─────────────────────────────────┐
-│          MARGIN                 │
-│  ┌───────────────────────────┐  │
-│  │        BORDER             │  │
-│  │  ┌─────────────────────┐  │  │
-│  │  │     PADDING         │  │  │
-│  │  │  ┌───────────────┐  │  │  │
-│  │  │  │   CONTENT     │  │  │  │
-│  │  │  │  (width/height)│  │  │  │
-│  │  │  └───────────────┘  │  │  │
-│  │  └─────────────────────┘  │  │
-│  └───────────────────────────┘  │
-└─────────────────────────────────┘
-```
+## 10. 📦 Les marges et espacements
 
 ```css
-.box {
-    width: 300px;
-    height: 200px;
-    padding: 20px;
-    border: 2px solid #333;
-    margin: 30px;
-    box-sizing: border-box;
-}
-
-/* Propriétés individuelles */
-.box {
-    padding-top: 10px;
-    padding-right: 20px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-
-    /* Shorthand : haut droite bas gauche */
-    padding: 10px 20px 10px 20px;
-
-    /* Shorthand : vertical / horizontal */
-    padding: 10px 20px;
-}
-```
-
-### 3.4 Flexbox
-
-Flexbox permet de créer des mises en page flexibles et alignées.
-
-```css
-/* Activer Flexbox */
-.container {
-    display: flex;
-}
-
-/* Direction */
-.container {
-    flex-direction: row;
-    flex-direction: column;
-    flex-direction: row-reverse;
-}
-
-/* Retour à la ligne */
-.container {
-    flex-wrap: wrap;
-}
-
-/* Shorthand */
-.container {
-    flex-flow: row wrap;
-}
-
-/* Alignement horizontal (axe principal) */
-.container {
-    justify-content: flex-start;
-    justify-content: flex-end;
-    justify-content: center;
-    justify-content: space-between;
-    justify-content: space-around;
-    justify-content: space-evenly;
-}
-
-/* Alignement vertical (axe transversal) */
-.container {
-    align-items: flex-start;
-    align-items: flex-end;
-    align-items: center;
-    align-items: stretch;
-}
-
-/* Propriétés des enfants */
-.item {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 200px;
-    flex: 1 0 200px;
-}
-
-/* Centrer parfaitement (très courant !) */
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-```
-
-**Exemple concret : Barre de navigation avec Flexbox**
-
-```css
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #2c3e50;
-}
-
-.navbar .logo {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-}
-
-.navbar ul {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-.navbar a {
-    color: white;
-    text-decoration: none;
-    padding: 8px 16px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
-}
-
-.navbar a:hover {
-    background-color: #34495e;
-}
-```
-
-### 3.5 Responsive Design
-
-Le responsive design permet à un site de s'adapter à toutes les tailles d'écran.
-
-#### Media Queries
-
-```css
-/* Mobile first : styles par défaut pour mobile */
-.container {
+div {
+    margin: 20px;
     padding: 15px;
 }
-
-/* Tablettes (768px et plus) */
-@media (min-width: 768px) {
-    .container {
-        padding: 30px;
-        max-width: 720px;
-        margin: 0 auto;
-    }
-}
-
-/* Desktop (992px et plus) */
-@media (min-width: 992px) {
-    .container {
-        max-width: 960px;
-    }
-}
-
-/* Grands écrans (1200px et plus) */
-@media (min-width: 1200px) {
-    .container {
-        max-width: 1140px;
-    }
-}
 ```
 
-#### Unités relatives
+| Propriété | Rôle |
+|-----------|------|
+| `margin` | Espace extérieur |
+| `padding` | Espace intérieur |
 
-```css
-.card {
-    width: 80%;
-    font-size: 1rem;
-    padding: 1em;
-    max-width: 600px;
-}
-
-/* Viewport units */
-.hero {
-    height: 100vh;
-    width: 100vw;
-}
-```
-
-#### Images responsives
+## 11. 🖼️ Les bordures
 
 ```css
 img {
-    max-width: 100%;
-    height: auto;
+    border: 3px solid black;
 }
 ```
 
-## Exemples concrets
+**Structure :** `border: épaisseur style couleur;`
 
-### Carte produit responsive
+## 12. 🏗️ Les sélecteurs CSS
+
+### Sélecteur par balise
+
+```css
+p {
+    color: blue;
+}
+```
+
+### Sélecteur par classe
 
 ```html
-<div class="card">
-    <img src="produit.jpg" alt="Produit">
-    <div class="card-body">
-        <h3>Nom du produit</h3>
-        <p>Description du produit...</p>
-        <span class="price">29.99 €</span>
-        <button>Ajouter au panier</button>
-    </div>
-</div>
+<p class="texte">Bonjour</p>
 ```
 
 ```css
-.card {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden;
-    max-width: 300px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-.card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-
-.card-body {
-    padding: 15px;
-}
-
-.price {
-    font-size: 1.5em;
-    color: #e74c3c;
-    font-weight: bold;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-button:hover {
-    background-color: #2980b9;
+.texte {
+    color: green;
 }
 ```
 
-## Mini projet pratique
+### Sélecteur par identifiant
 
-### Créer une page portfolio responsive
+```html
+<h1 id="titre">Bienvenue</h1>
+```
 
-Créez une page avec :
-1. Un header avec votre nom et une navigation en Flexbox
-2. Une section "Projets" avec une grille de cartes responsive
-3. Une section "Contact" avec un formulaire
-4. Un footer
-5. Utilisez des media queries pour adapter le design mobile/tablette/desktop
+```css
+#titre {
+    color: red;
+}
+```
+
+## 13. 📐 Largeur et hauteur
+
+```css
+div {
+    width: 300px;
+    height: 200px;
+}
+```
+
+## 14. 🧱 Le modèle Box Model
+
+Chaque élément HTML est considéré comme une **boîte**.
+
+Il contient :
+
+1. Le contenu
+2. Le padding
+3. La bordure
+4. La marge
+
+```css
+div {
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    margin: 15px;
+}
+```
+
+## 15. 🌈 Les arrière-plans
+
+### Couleur de fond
+
+```css
+body {
+    background-color: beige;
+}
+```
+
+### Image de fond
+
+```css
+body {
+    background-image: url("image.jpg");
+}
+```
+
+## 16. 🧭 Introduction à Flexbox
+
+Flexbox permet d'aligner facilement les éléments.
+
+```css
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+```
+
+| Propriété | Rôle |
+|-----------|------|
+| `display: flex` | Active Flexbox |
+| `justify-content` | Alignement horizontal |
+| `align-items` | Alignement vertical |
+
+## 17. ✨ Les effets simples
+
+### Hover
+
+```css
+button:hover {
+    background-color: blue;
+    color: white;
+}
+```
+
+> L'effet apparaît lorsque la souris passe sur l'élément.
+
+## 18. 📱 Introduction au Responsive Design
+
+Le responsive permet d'adapter le site aux téléphones et tablettes.
+
+```css
+@media screen and (max-width: 768px) {
+    body {
+        background-color: lightblue;
+    }
+}
+```
+
+## 19. ⚠️ Erreurs fréquentes
+
+### ❌ Mauvais nom de fichier
+
+```html
+<link rel="stylesheet" href="styles.css">
+```
+
+Alors que le fichier s'appelle `style.css`.
+
+### ❌ Mauvais emplacement du fichier
+
+Le chemin doit être correct.
+
+### ❌ Oublier la balise `<link>`
+
+Sans liaison, le CSS ne fonctionne pas.
+
+## 20. ✅ Bonnes pratiques CSS
+
+- Séparer HTML et CSS
+- Utiliser des noms de classes clairs
+- Indenter correctement le code
+- Éviter les répétitions
+- Organiser les styles par section
+- Commenter le code important
+
+## 🧪 Exercice pratique
+
+### Objectif
+
+Créer une page stylisée contenant :
+
+- Un titre coloré
+- Un paragraphe
+- Une image avec bordure
+- Un bouton avec effet hover
+- Une liste stylisée
+
+**index.html**
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mon site CSS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Bienvenue sur mon site</h1>
+    <p>Je suis en train d'apprendre CSS.</p>
+    <img src="image.jpg" alt="image">
+    <button>Bouton</button>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+    </ul>
+</body>
+
+</html>
+```
+
+**style.css**
+
+```css
+body {
+    font-family: Arial;
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+h1 {
+    color: darkblue;
+}
+
+p {
+    font-size: 18px;
+}
+
+img {
+    width: 300px;
+    border: 3px solid black;
+}
+
+button {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: blue;
+}
+
+ul {
+    list-style: square;
+}
+```
+
+## ✅ Résumé
+
+Dans ce chapitre, vous avez appris :
+
+- Ce qu'est CSS
+- Comment relier HTML et CSS
+- Les différentes façons d'ajouter du CSS
+- Les couleurs et textes
+- Les marges et espacements
+- Les sélecteurs CSS
+- Le modèle Box Model
+- Les bases de Flexbox
+- Les effets hover
+- Le responsive design
+- Les bonnes pratiques CSS
 
 ## Quiz
 
-**Question 1 :** Quelle propriété CSS change la couleur du texte ?
+**Question 1 :** Que signifie CSS ?
+- a) Computer Style Sheets
+- b) Cascading Style Sheets
+- c) Creative Style Sheets
+- d) Colorful Style Sheets
+
+**Question 2 :** Quelle balise permet de lier un fichier CSS à un fichier HTML ?
+- a) `<style>`
+- b) `<css>`
+- c) `<link>`
+- d) `<script>`
+
+**Question 3 :** Quelle propriété CSS change la couleur du texte ?
 - a) `text-color`
 - b) `font-color`
 - c) `color`
 - d) `text-style`
 
-**Question 2 :** Dans le box model, quelle propriété crée l'espace à l'intérieur de la bordure ?
-- a) `margin`
-- b) `border`
-- c) `padding`
-- d) `spacing`
+**Question 4 :** Quelle est la différence entre `margin` et `padding` ?
+- a) Il n'y a pas de différence
+- b) `margin` est l'espace intérieur, `padding` l'espace extérieur
+- c) `margin` est l'espace extérieur, `padding` l'espace intérieur
+- d) Les deux sont identiques
 
-**Question 3 :** Quelle propriété Flexbox aligne les éléments sur l'axe principal ?
-- a) `align-items`
-- b) `justify-content`
-- c) `flex-direction`
-- d) `flex-wrap`
+**Question 5 :** Comment sélectionner un élément par sa classe en CSS ?
+- a) `#maClasse`
+- b) `.maClasse`
+- c) `*maClasse`
+- d) `&maClasse`
 
-**Question 4 :** Que fait `box-sizing: border-box` ?
-- a) Ajoute une bordure à l'élément
-- b) Inclut padding et border dans la width/height
-- c) Centre l'élément
-- d) Crée une boîte flexible
+**Question 6 :** Quelle propriété Flexbox permet d'activer le mode flexible ?
+- a) `flex-direction`
+- b) `display: flex`
+- c) `align-items`
+- d) `justify-content`
 
-**Question 5 :** Quelle est l'unité relative à la taille de police de l'élément racine ?
-- a) `px`
-- b) `em`
-- c) `rem`
-- d) `%`
+**Question 7 :** Quel sélecteur CSS permet d'appliquer un style au survol d'un élément ?
+- a) `:click`
+- b) `:hover`
+- c) `:focus`
+- d) `:active`
+
+**Question 8 :** Que fait `@media screen and (max-width: 768px)` ?
+- a) Applique des styles seulement sur les écrans de 768px
+- b) Applique des styles quand l'écran fait moins de 768px
+- c) Applique des styles quand l'écran fait plus de 768px
+- d) Désactive les styles sur mobile
 
 <details>
 <summary><strong>Réponses</strong></summary>
 
-1. **c** - `color` change la couleur du texte
-2. **c** - `padding` est l'espace intérieur
-3. **b** - `justify-content` aligne sur l'axe principal
-4. **b** - Inclut padding et border dans les dimensions
-5. **c** - `rem` est relatif à l'élément racine (`<html>`)
+1. **b** - Cascading Style Sheets
+2. **c** - La balise `<link>` permet de lier un fichier CSS
+3. **c** - `color` change la couleur du texte
+4. **c** - `margin` est extérieur, `padding` est intérieur
+5. **b** - Le point `.` permet de sélectionner par classe
+6. **b** - `display: flex` active Flexbox
+7. **b** - `:hover` est la pseudo-classe de survol
+8. **b** - Applique les styles quand l'écran fait moins de 768px
 </details>
 
 ---
 
-# Chapitre 4 : Bootstrap
+# Chapitre 5 : Bootstrap
 
 ## Introduction
 
@@ -1243,7 +1351,7 @@ Créez une page qui affiche les membres d'une équipe avec :
 
 ---
 
-# Chapitre 5 : Introduction aux algorithmes
+# Chapitre 6 : Introduction aux algorithmes
 
 ## Introduction
 
@@ -1498,7 +1606,7 @@ AFFICHER "Nombre de voyelles : " + compteur
 
 ---
 
-# Chapitre 6 : Structures de données
+# Chapitre 7 : Structures de données
 
 ## Introduction
 
@@ -1721,7 +1829,7 @@ Créez un programme qui gère un inventaire de produits avec :
 
 ---
 
-# Chapitre 7 : JavaScript
+# Chapitre 8 : JavaScript
 
 ## Introduction
 
@@ -2018,7 +2126,7 @@ function verifierAdmission() { /* À compléter */ }
 
 ---
 
-# Chapitre 8 : DOM (Document Object Model)
+# Chapitre 9 : DOM (Document Object Model)
 
 ## Introduction
 
@@ -2328,7 +2436,7 @@ Créez une application de liste de tâches avec :
 
 ---
 
-# Chapitre 9 : Vibe Coding
+# Chapitre 10 : Vibe Coding
 
 ## Introduction
 

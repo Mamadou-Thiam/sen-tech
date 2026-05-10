@@ -612,97 +612,196 @@ Dans ce chapitre, vous avez appris :
         },
         {
           type: "module",
-          title: "📘 Chapitre 4 : CSS",
-          description: "Sélecteurs, box model, Flexbox, responsive",
-          fullContent: `# 📘 Chapitre 4 : CSS
+          title: "📘 Chapitre 4 : Introduction à CSS (Cours complet)",
+          description: "Bases de CSS, sélecteurs, couleurs, box model, Flexbox, responsive",
+          fullContent: `# 📘 Chapitre 4 : Introduction à CSS (Cours complet)
 
-## 1. 🎨 Intégrer du CSS
+## 🎯 Objectifs
+
+- Comprendre ce qu'est CSS
+- Relier HTML et CSS
+- Ajouter du style à une page web
+- Modifier les couleurs, textes et espacements
+- Utiliser les sélecteurs CSS
+- Créer une mise en page simple
+- Comprendre les bases du responsive
+
+## 1. 🎨 Qu'est-ce que CSS ?
+
+CSS = **Cascading Style Sheets**.
+
+CSS est utilisé pour styliser une page web : couleurs, animations, tailles, positions.
+
+> HTML structure le contenu, CSS s'occupe du design.
+
+## 2. 🔗 Lier HTML et CSS
 
 \`\`\`html
-<!-- Externe (recommandé) -->
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="style.css">
 \`\`\`
 
-## 2. 🔍 Les sélecteurs
+À placer dans le \`<head>\` du HTML.
 
-\`\`\`css
-/* Élément */
-p { color: navy; }
+### Dossier CSS
 
-/* Classe */
-.highlight { background-color: yellow; }
-
-/* ID */
-#header { background-color: #333; }
-
-/* Pseudo-classes */
-a:hover { color: red; }
-li:first-child { font-weight: bold; }
+\`\`\`html
+<link rel="stylesheet" href="css/style.css">
 \`\`\`
 
-## 3. 📦 Le Box Model
+## 3. 🎨 Les 3 façons d'ajouter du CSS
 
-\`\`\`
-┌───────────── MARGIN ─────────────┐
-│  ┌────────── BORDER ─────────┐   │
-│  │  ┌───── PADDING ─────┐    │   │
-│  │  │    CONTENT        │    │   │
-│  │  └───────────────────┘    │   │
-│  └───────────────────────────┘   │
-└──────────────────────────────────┘
+### Inline (dans la balise)
+
+\`\`\`html
+<p style="color: blue;">Bonjour</p>
 \`\`\`
 
-\`\`\`css
-.box {
-    width: 300px;
-    padding: 20px;
-    border: 2px solid #333;
-    margin: 30px;
-    box-sizing: border-box;
+### Interne (dans le \<head\>)
+
+\`\`\`html
+<head>
+    <style>
+        p { color: red; }
+    </style>
+</head>
+\`\`\`
+
+### Externe (recommandé)
+
+\`\`\`html
+<link rel="stylesheet" href="style.css">
+\`\`\`
+
+## 4. 🏷️ Syntaxe CSS
+
+\`\`\`
+selecteur {
+    propriété: valeur;
 }
 \`\`\`
 
-## 4. 💪 Flexbox
+\`\`\`css
+h1 {
+    color: blue;
+    font-size: 40px;
+}
+\`\`\`
+
+## 5. 🎨 Couleurs
+
+\`\`\`css
+body { background-color: lightgray; }
+h1 { color: darkblue; }
+\`\`\`
+
+| Type | Exemple |
+|------|---------|
+| Nom | \`red\` |
+| HEX | \`#ff0000\` |
+| RGB | \`rgb(255,0,0)\` |
+
+## 6. 🔠 Texte
+
+\`\`\`css
+p {
+    font-size: 18px;
+    font-family: Arial;
+    font-weight: bold;
+    text-align: center;
+}
+\`\`\`
+
+## 7. 📦 Marges et espacements
+
+| Propriété | Rôle |
+|-----------|------|
+| \`margin\` | Espace extérieur |
+| \`padding\` | Espace intérieur |
+
+\`\`\`css
+div {
+    margin: 20px;
+    padding: 15px;
+}
+\`\`\`
+
+## 8. 🖼️ Bordures
+
+\`\`\`css
+img {
+    border: 3px solid black;
+}
+\`\`\`
+
+## 9. 🏗️ Sélecteurs CSS
+
+| Sélecteur | Syntaxe | Exemple |
+|-----------|---------|---------|
+| Balise | \`élément\` | \`p { }\` |
+| Classe | \`.nom\` | \`.texte { }\` |
+| ID | \`#nom\` | \`#titre { }\` |
+
+## 10. 🧱 Box Model
+
+Chaque élément est une boîte : Contenu → Padding → Bordure → Marge
+
+\`\`\`css
+div {
+    width: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    margin: 15px;
+}
+\`\`\`
+
+## 11. 🌈 Arrière-plans
+
+\`\`\`css
+body { background-color: beige; }
+body { background-image: url("image.jpg"); }
+\`\`\`
+
+## 12. 🧭 Flexbox
 
 \`\`\`css
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px;
 }
 \`\`\`
 
 | Propriété | Rôle |
 |-----------|------|
+| \`display: flex\` | Active Flexbox |
 | \`justify-content\` | Alignement horizontal |
 | \`align-items\` | Alignement vertical |
-| \`flex-direction\` | Direction (row/column) |
-| \`flex-wrap\` | Retour à la ligne |
 
-## 5. 📱 Responsive Design
+## 13. ✨ Effet Hover
 
 \`\`\`css
-/* Mobile first */
-.container { padding: 15px; }
-
-/* Tablette */
-@media (min-width: 768px) {
-    .container { max-width: 720px; margin: 0 auto; }
-}
-
-/* Desktop */
-@media (min-width: 992px) {
-    .container { max-width: 960px; }
+button:hover {
+    background-color: blue;
+    color: white;
 }
 \`\`\`
 
-## ✅ Conclusion
+## 14. 📱 Responsive Design
 
-- **CSS** = habillage de la page
+\`\`\`css
+@media screen and (max-width: 768px) {
+    body { background-color: lightblue; }
+}
+\`\`\`
+
+## ✅ Résumé
+
+- **CSS** = langage de style pour le web
 - Box Model : content → padding → border → margin
-- Flexbox pour la mise en page
+- Sélecteurs : balise, classe (.), ID (#)
+- Flexbox pour l'alignement
 - Media queries pour le responsive`
+
         },
         {
           type: "module",
