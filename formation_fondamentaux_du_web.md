@@ -12,7 +12,7 @@
 2. [Git et GitHub](#chapitre-2-introduction-à-git-et-github)
 3. [Introduction à CSS](#chapitre-4-introduction-à-css)
 4. [Bootstrap](#chapitre-5-bootstrap)
-5. [Introduction aux algorithmes](#chapitre-6-introduction-aux-algorithmes)
+5. [Introduction aux algorithmes](#chapitre-6-introduction-aux-algorithmes-cours-complet)
 6. [Structures de données](#chapitre-7-structures-de-données)
 7. [JavaScript](#chapitre-8-javascript)
 8. [DOM (Document Object Model)](#chapitre-9-dom-document-object-model)
@@ -1351,216 +1351,344 @@ Créez une page qui affiche les membres d'une équipe avec :
 
 ---
 
-# Chapitre 6 : Introduction aux algorithmes
+# Chapitre 6 : Introduction aux algorithmes (Cours complet)
 
-## Introduction
+## 🎯 Objectifs du chapitre
 
-Un algorithme est une suite d'instructions logiques pour résoudre un problème. Comme une recette de cuisine, un algorithme prend des ingrédients (les données en entrée), suit des étapes précises, et produit un résultat. Ce chapitre vous apprendra à penser comme un programmeur.
+À la fin de ce chapitre, l'apprenant sera capable de :
 
-## Objectifs pédagogiques
+- Comprendre ce qu'est un algorithme
+- Identifier les étapes de résolution d'un problème
+- Écrire un algorithme simple en pseudo-code
+- Utiliser les variables et opérateurs
+- Comprendre les structures conditionnelles
+- Utiliser les boucles et structures itératives
+- Développer la logique algorithmique
 
-- Comprendre la logique de programmation
-- Maîtriser les conditions (if/else)
-- Utiliser les boucles (for, while)
-- Résoudre des problèmes simples avec des algorithmes
+## 1. 🌐 Qu'est-ce qu'un algorithme ?
 
-## Contenu détaillé
+Le terme **Algorithme** vient du mathématicien arabe Muhammad ibn Musa al-Khwarizmi.
 
-### 5.1 Qu'est-ce qu'un algorithme ?
+Un algorithme est :
 
-Un algorithme est une séquence finie et non ambigüe d'instructions qui permet de résoudre un problème.
+- Une **suite d'instructions** permettant de résoudre un problème en un nombre fini d'étapes
+- Une **méthode logique** utilisée avant de programmer
 
-**Exemple du quotidien - Recette de crêpes :**
+## 2. 📌 Définition simple
+
+Un algorithme sert à :
+
+- Résoudre un problème
+- Automatiser une tâche
+- Organiser des étapes logiques
+
+> Il est indépendant du langage de programmation.
+
+## 3. 🧠 Exemples d'algorithmes dans la vie réelle
+
+- Préparer un repas
+- Suivre un itinéraire GPS
+- Retirer de l'argent au distributeur
+- Gérer une file d'attente
+- Se connecter à un compte
+
+## 4. ✅ Propriétés d'un bon algorithme
+
+Un bon algorithme doit :
+
+- Avoir un nombre fini d'étapes
+- Être clair et compréhensible
+- Produire un résultat précis
+- Être non ambigu
+- Être efficace
+
+## 5. 🏗️ Formalisme d'un algorithme
+
+Il existe deux façons de représenter un algorithme :
+
+### L'organigramme
+
+Représentation graphique avec des symboles :
+
+- Rectangle → traitement
+- Losange → condition
+
+### Le pseudo-code (Méthode recommandée)
+
+Représentation textuelle proche du langage humain :
 
 ```
-ALGORITHME Faire_des_crêpes
-
-INGRÉDENTS :
-    - 250g de farine
-    - 4 oeufs
-    - 50cl de lait
-    - 1 pincée de sel
-
-ÉTAPES :
-    1. Verser la farine dans un saladier
-    2. Ajouter les oeufs un par un
-    3. Mélanger
-    4. Ajouter le lait progressivement
-    5. Ajouter le sel
-    6. Mélanger jusqu'à obtenir une pâte lisse
-    7. Faire chauffer une poêle
-    8. Verser une louche de pâte
-    9. Cuire 2 minutes de chaque côté
-    10. Répéter jusqu'à épuisement de la pâte
+Début
+    Afficher("Bonjour")
+Fin
 ```
 
-### 5.2 Variables et types de données
+## 6. ⚙️ Les phases d'écriture d'un algorithme
+
+### Initialisation (Entrées)
+
+Identifier les données nécessaires. Exemple : prix d'un produit, nom d'un utilisateur.
+
+### Traitement
+
+Appliquer les calculs ou instructions. Exemple : additionner, comparer, multiplier.
+
+### Restitution (Sortie)
+
+Afficher le résultat obtenu.
+
+## 7. 📄 Exemple simple d'algorithme
+
+**Calcul du prix TTC :**
 
 ```
-nombre = 42           // Entier (Integer)
-prix = 19.99          // Décimal (Float)
-nom = "Alice"         // Texte (String)
-est_vrai = true       // Booléen (Boolean)
-liste = [1, 2, 3]     // Tableau (Array)
+Algorithme CalculPrixTTC
+
+Variables :
+    prixUnitaire, nombreArticles, tauxTVA : Réel
+    prixHT, montantTVA, prixTTC : Réel
+
+Début
+    Afficher("Prix unitaire : ")
+    Lire(prixUnitaire)
+
+    Afficher("Nombre d'articles : ")
+    Lire(nombreArticles)
+
+    Afficher("Taux TVA : ")
+    Lire(tauxTVA)
+
+    prixHT ← prixUnitaire * nombreArticles
+    montantTVA ← prixHT * tauxTVA
+    prixTTC ← prixHT + montantTVA
+
+    Afficher("Le prix TTC est : ", prixTTC)
+Fin
 ```
 
-### 5.3 Les conditions
+## 8. 🏛️ Structure générale d'un algorithme
+
+Un algorithme est composé de :
+
+### L'en-tête
+
+Contient le nom de l'algorithme et les variables.
+
+### Le corps
+
+Contient `Début`, les instructions, et `Fin`.
+
+## 9. 💻 Différence entre algorithme et programme
+
+| Algorithme | Programme |
+|------------|-----------|
+| Méthode logique | Code exécutable |
+| Indépendant du langage | Dépend du langage |
+| Théorique | Pratique |
+
+> Un programme est la traduction d'un algorithme dans un langage informatique.
+
+## 10. 📦 Les variables
+
+Une **variable** est un espace mémoire permettant de stocker une valeur.
 
 ```
-SI age >= 18 ALORS
-    AFFICHER "Vous êtes majeur"
+VARIABLE age : entier
+```
+
+**Caractéristiques d'une variable :** nom, valeur, type.
+
+### Règles de nommage
+
+✅ Correct : `age`, `note1`, `prix_total`
+
+❌ Incorrect : `1age`, `prix-total`, `mon nom`
+
+## 11. 🔢 Les types de variables
+
+| Type | Exemple |
+|------|---------|
+| Entier | 5 |
+| Réel | 3.14 |
+| Booléen | VRAI / FAUX |
+| Caractère | 'A' |
+| Chaîne | "Bonjour" |
+
+## 12. 📌 Les constantes
+
+Une **constante** possède une valeur fixe qui ne change pas.
+
+```
+Constante PI = 3.14
+```
+
+## 13. ➕ Les opérateurs
+
+| Opérateur | Rôle | Exemple |
+|-----------|------|---------|
+| `+` | Addition | 5 + 2 |
+| `-` | Soustraction | 7 - 3 |
+| `*` | Multiplication | 4 * 2 |
+| `/` | Division | 10 / 2 |
+| `%` | Modulo | 10 % 3 |
+| `==` | Égalité | A == B |
+| `!=` | Différent | A != B |
+
+## 14. 🔄 L'affectation
+
+L'affectation permet de donner une valeur à une variable.
+
+```
+A ← 5
+```
+
+> La variable A reçoit la valeur 5.
+
+## 15. 🖊️ Lecture et écriture
+
+### Affichage
+
+```
+ECRIRE("Bonjour")
+```
+
+### Lecture clavier
+
+```
+LIRE(age)
+```
+
+## 16. 🧪 Exemple complet
+
+```
+VARIABLE A, B : entier
+
+Début
+    ECRIRE("Entrer A")
+    LIRE(A)
+
+    B ← A * 2
+
+    ECRIRE("Le double est : ", B)
+Fin
+```
+
+## 17. 🔀 Les structures conditionnelles
+
+Les conditions permettent de prendre des décisions.
+
+### Condition simple : SI
+
+```
+SI (A > 0) ALORS
+    ECRIRE("Positif")
+FIN_SI
+```
+
+### Condition alternative : SI...SINON
+
+```
+SI (A > 0) ALORS
+    ECRIRE("Positif")
 SINON
-    AFFICHER "Vous êtes mineur"
-FIN SI
+    ECRIRE("Négatif")
+FIN_SI
 ```
 
-**Opérateurs de comparaison :**
-
-| Opérateur | Signification | Exemple | Résultat |
-|-----------|---------------|---------|----------|
-| `==` | Égal à | `5 == 5` | Vrai |
-| `!=` | Différent de | `5 != 3` | Vrai |
-| `>` | Strictement supérieur | `5 > 3` | Vrai |
-| `<` | Strictement inférieur | `5 < 3` | Faux |
-| `>=` | Supérieur ou égal | `5 >= 5` | Vrai |
-| `<=` | Inférieur ou égal | `5 <= 3` | Faux |
-
-**Opérateurs logiques :**
-
-| Opérateur | Signification | Exemple |
-|-----------|---------------|---------|
-| `ET` (AND) | Les deux doivent être vrais | `age >= 18 ET age <= 65` |
-| `OU` (OR) | Au moins un doit être vrai | `jour == "samedi" OU jour == "dimanche"` |
-| `NON` (NOT) | Inverse la condition | `NON est_connecté` |
-
-**Exemple complet :**
+### Conditions imbriquées
 
 ```
-ALGORITHME Calculer_note
-
-ENTRÉE : note (nombre entre 0 et 20)
-
-SI note >= 16 ALORS
-    AFFICHER "Très bien"
-SINON SI note >= 14 ALORS
-    AFFICHER "Bien"
-SINON SI note >= 12 ALORS
-    AFFICHER "Assez bien"
-SINON SI note >= 10 ALORS
-    AFFICHER "Passable"
+SI (TEMP <= 0) ALORS
+    ECRIRE("GLACE")
 SINON
-    AFFICHER "Insuffisant"
-FIN SI
+    SI (TEMP == 100) ALORS
+        ECRIRE("VAPEUR")
+    FIN_SI
+FIN_SI
 ```
 
-### 5.4 Les boucles
+## 18. 🔁 Les structures itératives (Boucles)
 
-#### Boucle FOR
+Une boucle permet de répéter des instructions.
 
-```
-POUR i DE 1 À 10 FAIRE
-    AFFICHER i
-FIN POUR
-```
+### Boucle TANT QUE
 
 ```
-ENTRÉE : nombre
+VARIABLE i, somme : entier
 
-POUR i DE 1 À 10 FAIRE
-    resultat = nombre * i
-    AFFICHER nombre + " x " + i + " = " + resultat
-FIN POUR
+Début
+    i ← 0
+    somme ← 0
+
+    TANT_QUE (somme < 10)
+        i ← i + 1
+        somme ← somme + i
+    FIN_TANT_QUE
+
+    ECRIRE(i)
+Fin
 ```
 
-#### Boucle WHILE
+> La boucle continue tant que la condition est vraie.
+
+### Boucle POUR
 
 ```
-nombre_secret = 7
-tentative = 0
-
-TANT QUE tentative != nombre_secret FAIRE
-    DEMANDER "Devinez le nombre : "
-    RECEVOIR tentative
-
-    SI tentative < nombre_secret ALORS
-        AFFICHER "C'est plus !"
-    SINON SI tentative > nombre_secret ALORS
-        AFFICHER "C'est moins !"
-    FIN SI
-FIN TANT QUE
-
-AFFICHER "Bravo, vous avez trouvé !"
+POUR i ALLANT_DE 1 A 5
+    ECRIRE(i)
+FIN_POUR
 ```
 
-#### Boucle DO...WHILE
+> Répète les instructions un nombre précis de fois.
+
+### Différence entre POUR et TANT QUE
+
+| POUR | TANT QUE |
+|------|----------|
+| Nombre connu d'itérations | Nombre inconnu d'itérations |
+| Boucle définie | Boucle conditionnelle |
+
+## 19. ✅ Bonnes pratiques en algorithmique
+
+- Utiliser des noms clairs
+- Indenter le code
+- Éviter les répétitions inutiles
+- Commenter les parties importantes
+- Tester les algorithmes
+
+## 🧪 Exercice pratique
+
+**Objectif :** Créer un algorithme qui demande deux nombres, calcule leur somme, et affiche le résultat.
 
 ```
-FAIRE
-    DEMANDER "Entrez votre mot de passe : "
-    RECEVOIR mdp
-TANT QUE longueur(mdp) < 8
+VARIABLE A, B, SOMME : entier
 
-AFFICHER "Mot de passe accepté"
+Début
+    ECRIRE("Entrer A")
+    LIRE(A)
+
+    ECRIRE("Entrer B")
+    LIRE(B)
+
+    SOMME ← A + B
+
+    ECRIRE("La somme est : ", SOMME)
+Fin
 ```
 
-## Exemples concrets
+## ✅ Résumé
 
-### Calculer la moyenne
+Dans ce chapitre, vous avez appris :
 
-```
-notes = [12, 15, 8, 17, 14]
+- Ce qu'est un algorithme
+- Les variables et constantes
+- Les opérateurs
+- L'affectation
+- Les structures conditionnelles
+- Les boucles
+- Les bonnes pratiques de logique algorithmique
 
-somme = 0
-POUR i DE 0 À longueur(notes) - 1 FAIRE
-    somme = somme + notes[i]
-FIN POUR
-
-moyenne = somme / longueur(notes)
-AFFICHER "La moyenne est : " + moyenne
-```
-
-### Trouver le plus grand nombre
-
-```
-notes = [12, 15, 8, 17, 14]
-maximum = notes[0]
-
-POUR i DE 1 À longueur(notes) - 1 FAIRE
-    SI notes[i] > maximum ALORS
-        maximum = notes[i]
-    FIN SI
-FIN POUR
-
-AFFICHER "La note maximale est : " + maximum
-```
-
-### Compter les voyelles
-
-```
-texte = "Bonjour le monde"
-compteur = 0
-voyelles = "aeiouyAEIOUY"
-
-POUR i DE 0 À longueur(texte) - 1 FAIRE
-    SI texte[i] est dans voyelles ALORS
-        compteur = compteur + 1
-    FIN SI
-FIN POUR
-
-AFFICHER "Nombre de voyelles : " + compteur
-```
-
-## Mini projet pratique
-
-### Exercice : Algorithme de calcul de facture
-
-Écrivez l'algorithme (en pseudo-code) qui :
-1. Demande le prix unitaire d'un article
-2. Demande la quantité
-3. Calcule le sous-total
-4. Applique une remise de 10% si le sous-total > 100€
-5. Ajoute la TVA de 20%
-6. Affiche le total final
+> L'algorithmique est la base de tous les langages de programmation.
 
 ## Quiz
 
@@ -1568,40 +1696,47 @@ AFFICHER "Nombre de voyelles : " + compteur
 - a) Un langage de programmation
 - b) Une suite d'instructions pour résoudre un problème
 - c) Un type de variable
-- d) Un outil de débogage
+- d) Un navigateur web
 
-**Question 2 :** Quel opérateur signifie "différent de" ?
-- a) `==`
-- b) `!=`
-- c) `<>`
-- d) `=~`
+**Question 2 :** Quel symbole utilise-t-on pour l'affectation en pseudo-code ?
+- a) `=`
+- b) `←`
+- c) `==`
+- d) `→`
 
-**Question 3 :** Quelle boucle utiliser quand on connaît le nombre d'itérations ?
-- a) WHILE
-- b) DO...WHILE
-- c) FOR
-- d) IF
+**Question 3 :** Quel type de variable permet de stocker VRAI ou FAUX ?
+- a) Entier
+- b) Réel
+- c) Booléen
+- d) Caractère
 
-**Question 4 :** Que fait cet algorithme : `SI x > 0 ALORS AFFICHER "positif"` ?
-- a) Affiche toujours "positif"
-- b) Affiche "positif" seulement si x est supérieur à 0
-- c) Affiche "positif" si x est égal à 0
-- d) Donne une erreur
+**Question 4 :** Quelle structure permet de répéter des instructions ?
+- a) SI...SINON
+- b) Boucle
+- c) Variable
+- d) Constante
 
-**Question 5 :** Dans une condition `SI a ET b`, quand le résultat est-il VRAI ?
-- a) Quand a est vrai
-- b) Quand b est vrai
-- c) Quand a et b sont tous les deux vrais
-- d) Quand a ou b est vrai
+**Question 5 :** Quelle boucle utiliser quand on connaît le nombre exact d'itérations ?
+- a) TANT QUE
+- b) POUR
+- c) SI
+- d) SINON
+
+**Question 6 :** Que signifie le modulo (`%`) ?
+- a) La division
+- b) Le reste de la division
+- c) La multiplication
+- d) La soustraction
 
 <details>
 <summary><strong>Réponses</strong></summary>
 
 1. **b** - Un algorithme est une suite d'instructions
-2. **b** - `!=` signifie différent de
-3. **c** - FOR est utilisé quand on connaît le nombre d'itérations
-4. **b** - Affiche seulement si x > 0
-5. **c** - ET nécessite que les deux conditions soient vraies
+2. **b** - `←` est le symbole d'affectation
+3. **c** - Le type Booléen stocke VRAI ou FAUX
+4. **b** - La boucle permet de répéter des instructions
+5. **b** - POUR est utilisé quand le nombre est connu
+6. **b** - `%` donne le reste de la division
 </details>
 
 ---

@@ -873,63 +873,142 @@ Bootstrap utilise une grille de **12 colonnes**.
         },
         {
           type: "module",
-          title: "📘 Chapitre 6 : Introduction aux algorithmes",
-          description: "Logique, conditions, boucles",
-          fullContent: `# 📘 Chapitre 6 : Introduction aux algorithmes
+          title: "📘 Chapitre 6 : Introduction aux algorithmes (Cours complet)",
+          description: "Logique algorithmique, variables, conditions, boucles",
+          fullContent: `# 📘 Chapitre 6 : Introduction aux algorithmes (Cours complet)
 
-## 1. 🧠 Qu'est-ce qu'un algorithme ?
+## 🎯 Objectifs
 
-Une suite d'instructions pour résoudre un problème.
+- Comprendre ce qu'est un algorithme
+- Écrire un algorithme simple en pseudo-code
+- Utiliser variables, opérateurs et conditions
+- Maîtriser les boucles (POUR, TANT QUE)
+- Développer la logique algorithmique
+
+## 1. 🌐 Qu'est-ce qu'un algorithme ?
+
+Le terme vient du mathématicien arabe **Al-Khwarizmi**.
+
+Un algorithme = une suite d'instructions pour résoudre un problème en un nombre fini d'étapes.
+
+## 2. 📌 Propriétés d'un bon algorithme
+
+- Nombre fini d'étapes
+- Clair et compréhensible
+- Non ambigu
+- Résultat précis
+- Efficace
+
+## 3. 🏗️ Formalisme
+
+### Pseudo-code (recommandé)
 
 \`\`\`
-ALGORITHME Faire_des_crêpes
-  1. Verser la farine
-  2. Ajouter les oeufs
-  3. Mélanger
-  4. Ajouter le lait
-  5. Cuire 2 min de chaque côté
+Début
+    Afficher("Bonjour")
+Fin
 \`\`\`
 
-## 2. 📊 Variables et types
+### Organigramme
+
+Représentation graphique : Rectangle = traitement, Losange = condition.
+
+## 4. ⚙️ Phases d'un algorithme
+
+1. **Entrées** (initialisation)
+2. **Traitement** (calculs, comparaisons)
+3. **Sortie** (résultat)
+
+## 5. 📦 Variables
+
+Une variable stocke une valeur en mémoire.
 
 \`\`\`
-nombre = 42          // Integer
-prix = 19.99         // Float
-nom = "Alice"        // String
-est_vrai = true      // Boolean
-liste = [1, 2, 3]    // Array
+VARIABLE age : entier
 \`\`\`
 
-## 3. 🔀 Les conditions
+### Types
+
+| Type | Exemple |
+|------|---------|
+| Entier | 5 |
+| Réel | 3.14 |
+| Booléen | VRAI / FAUX |
+| Caractère | 'A' |
+| Chaîne | "Bonjour" |
+
+### Règles de nommage
+
+✅ \`age\`, \`note1\`, \`prix_total\`
+
+❌ \`1age\`, \`prix-total\`, \`mon nom\`
+
+## 6. ➕ Opérateurs
+
+| Opérateur | Rôle |
+|-----------|------|
+| \`+\` | Addition |
+| \`-\` | Soustraction |
+| \`*\` | Multiplication |
+| \`/\` | Division |
+| \`%\` | Modulo |
+| \`==\` | Égalité |
+| \`!=\` | Différent |
+
+## 7. 🔄 Affectation
 
 \`\`\`
-SI age >= 18 ALORS
-    AFFICHER "Majeur"
+A ← 5
+\`\`\`
+
+## 8. 🖊️ Lecture / Écriture
+
+\`\`\`
+ECRIRE("Bonjour")
+LIRE(age)
+\`\`\`
+
+## 9. 🔀 Conditions
+
+\`\`\`
+SI (A > 0) ALORS
+    ECRIRE("Positif")
 SINON
-    AFFICHER "Mineur"
-FIN SI
+    ECRIRE("Négatif")
+FIN_SI
 \`\`\`
 
-## 4. 🔁 Les boucles
+## 10. 🔁 Boucles
 
-🔹 **Boucle FOR :**
-\`\`\`
-POUR i DE 1 À 10 FAIRE
-    AFFICHER i
-FIN POUR
-\`\`\`
+### TANT QUE
 
-🔹 **Boucle WHILE :**
 \`\`\`
-TANT QUE tentative != secret FAIRE
-    DEMANDER "Devinez :"
-FIN TANT QUE
+TANT_QUE (somme < 10)
+    i ← i + 1
+    somme ← somme + i
+FIN_TANT_QUE
 \`\`\`
 
-## ✅ Conclusion
+### POUR
 
-- **Algorithme** = suite d'instructions pour résoudre un problème
-- Variables, conditions, boucles sont les briques de base`
+\`\`\`
+POUR i ALLANT_DE 1 A 5
+    ECRIRE(i)
+FIN_POUR
+\`\`\`
+
+| Boucle | Usage |
+|--------|-------|
+| POUR | Nombre connu d'itérations |
+| TANT QUE | Nombre inconnu |
+
+## ✅ Résumé
+
+- **Algorithme** = suite d'instructions logiques
+- Variables, opérateurs, affectation
+- Conditions (SI/SINON) et boucles (POUR/TANT QUE)
+- L'algorithmique est la base de tous les langages`
+
         },
         {
           type: "module",
